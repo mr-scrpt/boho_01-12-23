@@ -3,7 +3,9 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
+  --background-img: url("/img/bg.png");
+  --color-light: #fff;
+  --color-dark: #000;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
 }
@@ -17,11 +19,41 @@
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  color: var(--color-light);
+  background-image: var(--background-img);
+  position: relative;
+}
+
+@layer components {
+  .deco-bg-lines {
+    position: relative;
+    &:after {
+      content: "";
+      position: absolute;
+      height: 120px;
+      width: 100%;
+      /* background: var(--color-dark); */
+      background: linear-gradient(
+        0deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(0, 0, 0, 1) 100%
+      );
+      top: 0;
+      left: 0;
+    }
+    &:before {
+      content: "";
+      position: absolute;
+      height: 120px;
+      width: 100%;
+      /* background: var(--color-dark); */
+      background: linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 1) 0%,
+        rgba(255, 255, 255, 0) 100%
+      );
+      bottom: 0;
+      left: 0;
+    }
+  }
 }
