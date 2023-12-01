@@ -14,7 +14,7 @@ export const Wheel: FC<WheelProps> = (props) => {
   const { className, isSpin, onSpin } = props;
   const wheelClass = twMerge(
     isSpin ? "animate-spin" : "",
-    "flex justify-center w-full relative deco-gradient-spot before:top-0 before:left-8 before:w-64 before:h-28 before:-rotate-45",
+    "flex justify-center w-full relative deco-gradient-spot ",
   );
   return (
     <div className={className}>

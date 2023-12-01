@@ -1,5 +1,5 @@
 import { FC, HTMLAttributes, useEffect } from "react";
-import { motion, useAnimation } from "framer-motion";
+import { AnimatePresence, motion, useAnimation } from "framer-motion";
 
 interface OverlayProps extends HTMLAttributes<HTMLDivElement> {
   isVisible: boolean;
@@ -20,7 +20,12 @@ export const Overlay: FC<OverlayProps> = (props) => {
       <div className="flex w-full h-full items-center justify-center absolute z-30">
         <motion.div
           initial={{ opacity: 0, y: 100 }}
+          exit={{ opacity: 0, y: 100 }}
           animate={controls}
+          // transition={{ duration: 0.5 }}
+          // initial={{ opacity: 0 }}
+          // animate={{ opacity: 1 }}
+          // exit={{ opacity: 0 }}
           transition={{ duration: 0.5 }}
         >
           {children}

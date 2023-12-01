@@ -3,6 +3,7 @@ import { Banner } from "@/component/Banner/Banner";
 import { Overlay } from "@/component/Overlay/Overlay";
 import { Popup } from "@/component/Popup/Popup";
 import { Wheel } from "@/component/Wheel/Wheel";
+import { AnimatePresence } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
@@ -63,26 +64,29 @@ export default function Home() {
     <main className="grid grid-rows-2 grid-cols-1 md:grid-cols-2 md:grid-rows-1 items-center min-h-screen deco-bg-lines">
       <Banner className="relative z-10 transition-opacity ease-in duration-700 opacity-100" />
       <Wheel className="relative z-10" onSpin={onSpin} isSpin={isSpin} />
-      {showPopup && countStart === 1 && (
-        <Overlay isVisible={showPopup}>
-          <Popup
-            textBenefit="225 free spins"
-            textAbout="You’ve Got 1 Attempt Left"
-            onSpin={onSpin}
-            className="transition-opacity ease-in duration-700 opacity-100"
-          />
-        </Overlay>
-      )}
-      {showPopup && countStart === 2 && (
-        <Overlay isVisible={showPopup}>
-          <Popup
-            textBenefit="A$3000"
-            textBenefit2="+225 FREE SPINS"
-            textAbout="Sing Up and make a deposit to claim your Prize"
-            onSpin={onGoExternalSite}
-          />
-        </Overlay>
-      )}
+      <AnimatePresence>
+        {showPopup && countStart === 1 && (
+          <Overlay isVisible={showPopup}>
+            <Popup
+              textBenefit="225 free spins"
+              textAbout="You’ve Got 1 Attempt Left"
+              onSpin={onSpin}
+              className="max-w-[320] sm:max-w-[450] md:max-w-[640]"
+            />
+          </Overlay>
+        )}
+        {showPopup && countStart === 2 && (
+          <Overlay isVisible={showPopup}>
+            <Popup
+              textBenefit="A$3000"
+              textBenefit2="+225 FREE SPINS"
+              textAbout="Sing Up and make a deposit to claim your Prize"
+              className="max-w-[320] sm:max-w-[450] md:max-w-[640]"
+              onSpin={onGoExternalSite}
+            />
+          </Overlay>
+        )}
+      </AnimatePresence>
     </main>
   );
 }
