@@ -10,17 +10,16 @@ const SHOW_POPUP_TIME = SPINE_TIME + 1000;
 
 export default function Home() {
   const [showPopup, setShowPopup] = useState(false);
+  const [showPopupSecond, setShowPopupSecond] = useState(false);
 
   const [isSpin, setIsSpin] = useState(false);
   const [startAnimation, setStartAnimation] = useState(false);
 
   useEffect(() => {
     if (isSpin) {
-      console.log("start spin", isSpin);
       setStartAnimation(true);
 
       const spinTimer = setTimeout(() => {
-        console.log("stop spin");
         setIsSpin(false);
       }, SPINE_TIME);
 
@@ -52,13 +51,30 @@ export default function Home() {
     if (showPopup) {
       setShowPopup(false);
     }
-    // setShowPopup(true);
   };
+  const onSecondSpin = () => {
+    setIsSpin(true);
+    if (showPopup) {
+      setShowPopup(false);
+    }
+  };
+
   return (
     <main className="grid grid-rows-2 grid-cols-1 md:grid-cols-2 md:grid-rows-1 items-center min-h-screen deco-bg-lines">
-      <Banner className=" relative z-10" />
-      <Wheel className=" relative z-10" onSpin={onSpin} isSpin={isSpin} />
+      <Banner className="relative z-10 transition-opacity ease-in duration-700 opacity-100" />
+      <Wheel className="relative z-10" onSpin={onSpin} isSpin={isSpin} />
       {showPopup && (
+        <Overlay>
+          <Popup
+            textBenefit="225 free spins"
+            textAbout="You’ve Got 1 Attempt Left"
+            onSpin={onSecondSpin}
+            isVisible={showPopup}
+            className="transition-opacity ease-in duration-700 opacity-100"
+          />
+        </Overlay>
+      )}
+      {showPopupSecond && (
         <Overlay>
           <Popup
             textBenefit="225 free spins"
