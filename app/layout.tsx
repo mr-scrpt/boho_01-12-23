@@ -5,7 +5,21 @@ import "./globals.css";
 // const glory = Glory({ subsets: ["latin"], weight: ["800"] });
 
 // Font files can be colocated inside of `pages`
-const myFont = localFont({ src: "../public/fonts/Gilroy-Bold.woff" });
+const gilroy = localFont({
+  src: [
+    {
+      path: "../public/fonts/Gilroy-Bold.woff",
+      weight: "800",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/Gilroy-Regular.woff",
+      weight: "400",
+      style: "normal",
+    },
+  ],
+});
+// const myFont = localFont({ src: "../public/fonts/Gilroy-Bold.woff" });
 
 export const metadata: Metadata = {
   title: "Boho Casino",
@@ -19,7 +33,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={myFont.className}>{children}</body>
+      <body className={gilroy.className}>{children}</body>
     </html>
   );
 }

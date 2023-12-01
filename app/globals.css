@@ -22,6 +22,7 @@ body {
   color: var(--color-light);
   background-image: var(--background-img);
   position: relative;
+  font-weight: 800;
 }
 
 @layer components {
@@ -80,7 +81,8 @@ body {
   }
   .deco-gradient-border {
     /* height: 300px; */
-    padding: 20px;
+    padding: 30px;
+    background: rgba(0, 0, 0, 0.3);
     &:before {
       content: "";
       position: absolute;

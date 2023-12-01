@@ -14,6 +14,10 @@ const config: Config = {
         "2xl": "1400px",
       },
     },
+    colors: {
+      gold: "#EFB520",
+      green: "#BEFF04",
+    },
 
     extend: {
       backgroundImage: {

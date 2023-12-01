@@ -4,10 +4,13 @@ import imgCursor from "/public/img/wheel_cursor.svg";
 import imgWheel from "/public/img/wheel.png";
 import { Button } from "../shared/Button/Button";
 
-interface WheelProps extends HTMLAttributes<HTMLDivElement> {}
+interface WheelProps extends HTMLAttributes<HTMLDivElement> {
+  onSpin: () => void;
+  isSpin: boolean;
+}
 
 export const Wheel: FC<WheelProps> = (props) => {
-  const { className } = props;
+  const { className, isSpin, onSpin } = props;
   return (
     <div className={className}>
       <div className="flex relative mb-12">
@@ -22,7 +25,7 @@ export const Wheel: FC<WheelProps> = (props) => {
           />
         </div>
         <div className="flex absolute -bottom-12 left-1/2 transform -translate-x-1/2 ">
-          <Button text="Spin" className="" />
+          <Button text="Spin" className="" onClick={() => onSpin()} />
         </div>
       </div>
     </div>
