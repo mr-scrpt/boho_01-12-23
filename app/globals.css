@@ -60,4 +60,22 @@ body {
     background: linear-gradient(95.34deg, #f78601 15.2%, #f75901 94.05%),
       linear-gradient(180deg, #ffa800 0%, rgba(255, 168, 0, 0) 100%);
   }
+
+  .deco-gradient-spot {
+    &:before {
+      position: absolute;
+      content: "";
+      /* height: 100px; */
+      /* width: 100px; */
+      /* top: 0; */
+      /* left: 0; */
+
+      background: radial-gradient(
+        50% 50% at 50% 50%,
+        rgba(255, 255, 255, 0.7) 0%,
+        rgba(255, 168, 0, 0.3575) 48.44%,
+        rgba(255, 168, 0, 0) 100%
+      );
+    }
+  }
 }
