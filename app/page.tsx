@@ -63,7 +63,11 @@ export default function Home() {
   return (
     <main className="grid grid-rows-2 grid-cols-1 md:grid-cols-2 md:grid-rows-1 items-center min-h-screen deco-bg-lines">
       <Banner className="relative z-10 transition-opacity ease-in duration-700 opacity-100" />
-      <Wheel className="relative z-10" onSpin={onSpin} isSpin={isSpin} />
+      <Wheel
+        className="relative z-10 overflow-hidden"
+        onSpin={onSpin}
+        isSpin={isSpin}
+      />
       <AnimatePresence>
         {showPopup && countStart === 1 && (
           <Overlay isVisible={showPopup}>
@@ -71,7 +75,7 @@ export default function Home() {
               textBenefit="225 free spins"
               textAbout="You’ve Got 1 Attempt Left"
               onSpin={onSpin}
-              className="max-w-[320] sm:max-w-[450] md:max-w-[640]"
+              className="max-w-[320px] sm:max-w-[450px] md:max-w-[640px]"
             />
           </Overlay>
         )}
@@ -81,7 +85,7 @@ export default function Home() {
               textBenefit="A$3000"
               textBenefit2="+225 FREE SPINS"
               textAbout="Sing Up and make a deposit to claim your Prize"
-              className="max-w-[320] sm:max-w-[450] md:max-w-[640]"
+              className="max-w-[320px] sm:max-w-[450px] md:max-w-[640px]"
               onSpin={onGoExternalSite}
             />
           </Overlay>

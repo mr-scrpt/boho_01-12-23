@@ -20,7 +20,13 @@ export const Wheel: FC<WheelProps> = (props) => {
     <div className={className}>
       <div className="flex relative mb-12">
         <div className="absolute top-4 left-1/2 transform -translate-x-1/2">
-          <Image src={imgCursor} alt="cursor" className="w-8 md:w-16" />
+          <Image
+            src={imgCursor}
+            alt="cursor"
+            className="w-8 md:w-16"
+            width={800}
+            height={800}
+          />
         </div>
         <div className={wheelClass}>
           <Image
