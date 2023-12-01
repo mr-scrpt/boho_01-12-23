@@ -10,15 +10,15 @@ export const Wheel: FC<WheelProps> = (props) => {
   const { className } = props;
   return (
     <div className={className}>
-      <div className="flex relative">
-        <div className="absolute">
-          <Image src={imgCursor} alt="cursor" />
+      <div className="flex relative mb-12">
+        <div className="absolute top-4 left-1/2 transform -translate-x-1/2">
+          <Image src={imgCursor} alt="cursor" className="w-8" />
         </div>
-        <div className="flex">
-          <Image src={imgWheel} alt="cursor" />
+        <div className="flex justify-center w-full">
+          <Image src={imgWheel} alt="cursor" className="w-[300px]" />
         </div>
-        <div className="flex absolute">
-          <Button text="Spin" />
+        <div className="flex absolute -bottom-12 left-1/2 transform -translate-x-1/2 ">
+          <Button text="Spin" className="" />
         </div>
       </div>
     </div>
