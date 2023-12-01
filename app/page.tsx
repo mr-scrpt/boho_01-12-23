@@ -6,26 +6,52 @@ import { Wheel } from "@/component/Wheel/Wheel";
 import { useEffect, useState } from "react";
 
 const SPINE_TIME = 3000;
+const SHOW_POPUP_TIME = SPINE_TIME + 1000;
 
 export default function Home() {
   const [showPopup, setShowPopup] = useState(false);
 
   const [isSpin, setIsSpin] = useState(false);
+  const [startAnimation, setStartAnimation] = useState(false);
 
   useEffect(() => {
     if (isSpin) {
-      const timeout = setTimeout(() => {
-        setShowPopup(true);
+      console.log("start spin", isSpin);
+      setStartAnimation(true);
+
+      const spinTimer = setTimeout(() => {
+        console.log("stop spin");
+        setIsSpin(false);
       }, SPINE_TIME);
 
       return () => {
-        clearTimeout(timeout);
+        console.log("clearTimeout");
+        clearTimeout(spinTimer);
       };
     }
   }, [isSpin]);
 
+  useEffect(() => {
+    if (startAnimation) {
+      console.log("start delay show popup");
+      const showPopupTimer = setTimeout(() => {
+        console.log("showPopup");
+        setShowPopup(true);
+        setStartAnimation(false);
+      }, SHOW_POPUP_TIME);
+
+      return () => {
+        console.log("clearTimeout");
+        clearTimeout(showPopupTimer);
+      };
+    }
+  }, [startAnimation]);
+
   const onSpin = () => {
     setIsSpin(true);
+    if (showPopup) {
+      setShowPopup(false);
+    }
     // setShowPopup(true);
   };
   return (
@@ -37,6 +63,7 @@ export default function Home() {
           <Popup
             textBenefit="225 free spins"
             textAbout="You’ve Got 1 Attempt Left"
+            onSpin={onSpin}
           />
         </Overlay>
       )}
