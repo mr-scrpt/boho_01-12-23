@@ -56,4 +56,8 @@ body {
       left: 0;
     }
   }
+  .deco-gradient {
+    background: linear-gradient(95.34deg, #f78601 15.2%, #f75901 94.05%),
+      linear-gradient(180deg, #ffa800 0%, rgba(255, 168, 0, 0) 100%);
+  }
 }
