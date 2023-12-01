@@ -1,7 +1,7 @@
 import { FC, HTMLAttributes } from "react";
 import { twMerge } from "tailwind-merge";
 
-interface ButtonProps extends HTMLAttributes<HTMLDivElement> {
+interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
   text: string;
 }
 

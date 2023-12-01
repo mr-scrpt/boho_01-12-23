@@ -25,6 +25,32 @@ const config: Config = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+      keyframes: {
+        spinSlow: {
+          "0%": {
+            transform: "rotate(0deg)",
+            animationTimingFunction: "ease-in-out",
+          },
+          "100%": {
+            transform: "rotate(780deg)",
+            animationTimingFunction: "ease-in-out",
+          },
+        },
+        spinSlowSecond: {
+          "0%": {
+            transform: "rotate(780deg)",
+            animationTimingFunction: "ease-in-out",
+          },
+          "100%": {
+            transform: "rotate(1280deg)",
+            animationTimingFunction: "ease-in-out",
+          },
+        },
+      },
+      animation: {
+        "spin-slow": "spinSlow 3s forwards", // Измените 3s на желаемую продолжительность
+        "spin-slow-second": "spinSlowSecond 3s forwards", // Измените 3s на желаемую продолжительность
+      },
     },
   },
   plugins: [],

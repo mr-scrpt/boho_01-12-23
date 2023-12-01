@@ -65,6 +65,7 @@ export default function Home() {
       <Banner className="relative z-10 transition-opacity ease-in duration-700 opacity-100" />
       <Wheel
         className="relative z-10 overflow-hidden"
+        countStart={countStart}
         onSpin={onSpin}
         isSpin={isSpin}
       />

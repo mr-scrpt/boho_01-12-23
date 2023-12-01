@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { FC, HTMLAttributes } from "react";
+import { FC, HTMLAttributes, useEffect, useState } from "react";
 import imgCursor from "/public/img/wheel_cursor.svg";
 import imgWheel from "/public/img/wheel.png";
 import { Button } from "../shared/Button/Button";
@@ -8,13 +8,25 @@ import { twMerge } from "tailwind-merge";
 interface WheelProps extends HTMLAttributes<HTMLDivElement> {
   onSpin: () => void;
   isSpin: boolean;
+  countStart: number;
 }
 
 export const Wheel: FC<WheelProps> = (props) => {
-  const { className, isSpin, onSpin } = props;
+  const { className, isSpin, onSpin, countStart } = props;
+  const [start, setStart] = useState(false);
+  useEffect(() => {
+    if (isSpin) {
+      setStart(true);
+    }
+    // if(countStart == 1){
+    //
+    // }
+  }, [isSpin]);
+
   const wheelClass = twMerge(
-    isSpin ? "animate-spin" : "",
-    "flex justify-center w-full relative deco-gradient-spot ",
+    start ? "animate-spin-slow" : "",
+    countStart === 2 ? "animate-spin-slow-second" : "",
+    "flex justify-center w-full relative deco-gradient-spot ease-in-out",
   );
   return (
     <div className={className}>
