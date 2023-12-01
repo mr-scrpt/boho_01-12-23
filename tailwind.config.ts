@@ -15,12 +15,6 @@ const config: Config = {
       },
     },
   },
-  // plugins: [],
-  plugins: {
-    "postcss-import": {},
-    "tailwindcss/nesting": {},
-    tailwindcss: {},
-    autoprefixer: {},
-  },
+  plugins: [],
 };
 export default config;
